@@ -50,5 +50,12 @@ def rnn():
                 mse = loss.eval(feed_dict={X: X_batch, y: y_batch})
                 print(i, "\tMSE:", mse)
 
+        X_new, y_new = next_batch(batch_size, num_time_steps)
+        y_pred = sess.run(outputs, feed_dict={X: X_new})
+
+        print(y_new.reshape(30))
+        print(y_pred.reshape(30))
+
+
 if __name__ == '__main__':
     rnn()
